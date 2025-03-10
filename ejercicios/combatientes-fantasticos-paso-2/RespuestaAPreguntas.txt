@@ -1,0 +1,28 @@
+1) Personalmente creemos que dado el contexto del ejercicio, es mucho más claro tener dos métodos separados en vez de unificar ambos.
+Esto se puede sustentar mediante las siguientes observaciones que tuvimos:
+
+1- Sentimos que es mucho más claro (Para uno mismo y para otro programador) analizar la respuesta nativa del objeto ante un mensaje.
+Al hacer "combatienteArthas estaHerido" y luego analizar esa respuesta como colaborador en un método del objeto orquestador se vuelve mucho más claro el protocolo que se sigue, a diferencia
+de negar la respuesta del mensaje (algo así como "(combatienteArthas EstaHerido) not") ya que de alguna forma el objeto orquestador se está metiendo en la lógica del objeto cobatienteArthas
+al modificar el primer valor obtenido.
+
+2- Dado que ambos métodos son bastante cortos y fieles a la descripción instantánea que uno tiene de leer su firma, se justifica la posibilidad de tener dos métodos muy similares en 
+comportamiento. Si sucediese que ambos métodos tuvieran una lógica mucho más compleja y la clase en la que estuvieran definidos estuviese ya muy cargada se justificaría más el negar la respuesta
+de un único mensaje según conveniencia.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2) Los tests mencionados en la consigna, según nuestro criterio, son un ejemplo de código repetido el cual puede resumirse manteniendo encapsulamiento en un único método privado el cual reciba
+dos colaboradoradores internos siguiendo la lógica que se declara en la firma del método. Por ejemplo.
+
+En vez de tener el mismo código cambiando únicamente los combatientes en "arthasDejaFueraDeCombateAMankrik" y "arthasDejaFueraDeCombateAOlgra", implementar un método privado de nombre
+"atacanteDejaFueraDeCombateACombatiente" y que los dos colaboradores que recibe esté método se adapten a los que se declaran en la firma. Esto permite que desde afuera se pueda seguir
+llamando a los métodos para analizar si devuelven verdadero o falso pero sin romper encapsulamiento, ya que el manejo de los combatientes queda dentro de la lógica interna de combatientesTest.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3) El modelado para definir resultados que elegimos fue el de permitirle al objeto orquestador, que es el encargado de llevar la lógica que rodea al desarollo de los combates, la posibilidad de 
+analizar mediante criterios definidos en los métodos "assertElResultadoEs..." si se llegó a una condición de victoria para alguno de los dos bandos o un empate. Esto permite separar los protocolos de
+victoria/derrota del desarrollo del combate en sí.
